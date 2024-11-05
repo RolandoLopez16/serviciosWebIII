@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Libros</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Libros Disponibles</h1>
+    
+
+    <div id="book-list"></div>
+    
+
+    <p><a href="documentacion.html">Ir a la Documentación de la API</a></p>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const API_URL = 'http://localhost:3001/books';
+            const bookList = document.getElementById('book-list');
+    
+            try {
+                const response = await fetch(API_URL);
+                if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
+                const books = await response.json();
+    
+                bookList.innerHTML = books.map(book => `
+                    <div>
+                        <h3>${book.name}</h3>
+                        <p>Autor: ${book.author}</p>
+                        <p>Año: ${book.year}</p>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error("Error al obtener los libros:", error);
+                bookList.innerHTML = "<p>Error al cargar los libros.</p>";
+            }
+        });
+    </script>
+    
+</body>
+</html>

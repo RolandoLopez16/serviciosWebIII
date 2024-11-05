@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentación de la API</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Documentación de la API de Libros</h1>
+    
+    <section>
+        <h2>Endpoints</h2>
+        <ul>
+            <li><strong>GET /books</strong> - Obtener todos los libros.</li>
+            <li><strong>GET /books/:id</strong> - Obtener un libro por ID.</li>
+            <li><strong>POST /books</strong> - Añadir un nuevo libro (Requiere JSON en el body con `name`, `author`, `year`).</li>
+            <li><strong>PUT /books/:id</strong> - Actualizar un libro existente por ID.</li>
+            <li><strong>DELETE /books/:id</strong> - Eliminar un libro por ID.</li>
+        </ul>
+    </section>
+    
+    <!-- Enlace para volver a la lista de libros -->
+    <p><a href="index.html">Volver a la Lista de Libros</a></p>
+</body>
+</html>
