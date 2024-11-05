@@ -95,7 +95,8 @@ app.delete("/books/:id", (req, res) => {
     }
 });
 
-// Inicia el servidor en el puerto 3001
-app.listen(3001, () => {
-    console.log("Aplicación escuchando por el puerto 3001");
+// Inicia el servidor en el puerto 3001 O SE AJUSTA PARA USARELO EN VERCEL
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+    console.log(`Aplicación escuchando por el puerto ${PORT}`);
 });
