@@ -105,9 +105,3 @@ const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     console.log(`Aplicación escuchando por el puerto ${PORT}`);
 });
-app.get("/books", (req, res) => {
-    console.log("Petición recibida en /books");
-    const data = readData();
-    console.log("Datos leídos de db.json:", data);
-    res.json(data.books);
-});
