@@ -2,6 +2,8 @@ import express from 'express'; // Importa Express
 import fs from 'fs'; // Importa fs para manejar archivos
 import bodyParser from 'body-parser'; // Importa bodyParser para manejar JSON
 import cors from 'cors'; // Importa CORS para habilitar la comunicación entre frontend y backend
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const app = express(); // Define la aplicación de Express
 
@@ -12,9 +14,10 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Middleware para servir archivos estáticos desde la carpeta "public"
-const path = require('path');
+//const path = require('path');
 app.use(express.static(path.join(__dirname, 'public')));
-
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 //app.use(express.static('public'));
 
