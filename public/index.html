@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Libros</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Libros Disponibles</title>
 </head>
 <body>
     <h1>Libros Disponibles</h1>
@@ -13,7 +12,7 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", async () => {
-            const API_URL = 'https://servicios-rolando.vercel.app/books';
+            const API_URL = 'http://localhost:3001/books';  // Ruta para entorno local
             const bookList = document.getElementById('book-list');
     
             try {
