@@ -1,11 +1,15 @@
-import express from 'express'; // Importa Express
-import fs from 'fs'; // Importa fs para manejar archivos
-import bodyParser from 'body-parser'; // Importa bodyParser para manejar JSON
-import cors from 'cors'; // Importa CORS para habilitar la comunicación entre frontend y backend
-import path from 'path';
+import express from 'express';
+import fs from 'fs';
+import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
+import bodyParser from 'body-parser';
+import cors from 'cors';
 
-const app = express(); // Define la aplicación de Express
+// Definir __filename y __dirname para ESModules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const app = express();
 
 // Habilita CORS para todas las solicitudes
 app.use(cors());
@@ -14,13 +18,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Middleware para servir archivos estáticos desde la carpeta "public"
-//const path = require('path');
 app.use(express.static(path.join(__dirname, 'public')));
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-//app.use(express.static('public'));
-
 
 // Ruta principal de la API
 app.get("/", (req, res) => {
@@ -102,7 +100,7 @@ app.delete("/books/:id", (req, res) => {
     }
 });
 
-// Inicia el servidor en el puerto 3001 O SE AJUSTA PARA USARELO EN VERCEL
+// Inicia el servidor en el puerto 3001 o en el puerto proporcionado por Vercel
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     console.log(`Aplicación escuchando por el puerto ${PORT}`);
