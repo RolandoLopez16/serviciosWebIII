@@ -18,7 +18,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Middleware para servir archivos estáticos desde la carpeta "public"
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, './')));
 
 // Ruta principal de la API
 app.get("/", (req, res) => {
